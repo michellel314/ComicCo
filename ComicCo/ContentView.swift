@@ -10,7 +10,15 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack {
-            Text("It's time for comics!") // just a placeholder
+            TabView {
+                Tab("My Collection", systemImage: "book.fill"){
+                    
+                }
+                
+                Tab("Search Comics", systemImage: "magnifyingglass.circle.fill"){
+                    
+                }
+            }
         }
         .padding()
     }
