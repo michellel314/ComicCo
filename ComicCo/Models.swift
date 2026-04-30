@@ -1,7 +1,11 @@
 import Foundation
 // api key: a23646e57aa68cf68abfa6f0f81f9b49961621f3
 // remember to always end with format=json
-struct Comic: Codable {
+
+struct ComicResponse: Codable {
+    var results: [Comic]
+}
+struct Comic: Codable, Identifiable {
     var api_detail_url: String // I think this will have to be parsed separately once the comic itself is pulled up
     var cover_date: Date
     var id: Int

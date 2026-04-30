@@ -8,15 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(DataManager.self) private var dataManager
     var body: some View {
         VStack {
             TabView {
                 Tab("My Collection", systemImage: "book.fill"){
-                    
+                    VStack{
+                        Text("collection")
+                    }
                 }
                 
                 Tab("Search Comics", systemImage: "magnifyingglass.circle.fill"){
-                    
+                    VStack {
+                        Text("Serch")
+                        List {
+                            /*
+                            ForEach(dataManager.getIssues()) { issue in
+                                Text(issue)
+                            }
+                             */
+                        }
+                    }
                 }
             }
         }
