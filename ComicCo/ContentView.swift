@@ -21,13 +21,18 @@ struct ContentView: View {
                 Tab("Search Comics", systemImage: "magnifyingglass.circle.fill"){
                     VStack {
                         Text("Serch")
+                        /*
                         List {
-                            /*
-                            ForEach(dataManager.getIssues()) { issue in
+                            // WHY WON'T YOU WORK
+                            ForEach(dataManager.getIssueData()) { issue in
                                 Text(issue)
                             }
-                             */
                         }
+                         
+                        .task {
+                            await dataManager.getIssueData()
+                        }
+                         */
                     }
                 }
             }
