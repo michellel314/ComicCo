@@ -21,18 +21,17 @@ struct ContentView: View {
                 Tab("Search Comics", systemImage: "magnifyingglass.circle.fill"){
                     VStack {
                         Text("Serch")
-                        /*
                         List {
                             // WHY WON'T YOU WORK
-                            ForEach(dataManager.getIssueData()) { issue in
-                                Text(issue)
+                            ForEach(dataManager.issues) { issue in
+                                Text("list")
+                                Text(issue.name)
                             }
                         }
-                         
                         .task {
                             await dataManager.getIssueData()
                         }
-                         */
+                        
                     }
                 }
             }
@@ -43,4 +42,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environment(DataManager())
 }

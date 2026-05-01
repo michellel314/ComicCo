@@ -7,10 +7,11 @@ struct ComicResponse: Codable {
 }
 struct Comic: Codable, Identifiable {
     var api_detail_url: String // I think this will have to be parsed separately once the comic itself is pulled up
-    var cover_date: Date
+    //FIX THESE
+    var cover_date: String
     var id: Int
     var name: String
-    var issue_number: Int
+    var issue_number: String
     var image: Image
 }
 
