@@ -10,7 +10,7 @@ struct Comic: Codable, Identifiable {
     //FIX THESE
     var cover_date: String
     var id: Int
-    var name: String
+    var name: String?
     var issue_number: String
     var image: Image
 }

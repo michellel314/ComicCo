@@ -24,8 +24,7 @@ struct ContentView: View {
                         List {
                             // WHY WON'T YOU WORK
                             ForEach(dataManager.issues) { issue in
-                                Text("list")
-                                Text(issue.name)
+                                Text(issue.name ?? "NULL")
                             }
                         }
                         .task {
