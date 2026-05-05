@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ComicView: View {
-    private var comic: Comic
+    let comic: Comic
     var body: some View {
         VStack{
             let imageURL = URL(string: comic.image.medium_url)
@@ -19,7 +19,9 @@ struct ComicView: View {
             } placeholder: {
                 ProgressView()
             }
+            Text(comic.name ?? "")
             
         }
     }
 }
+

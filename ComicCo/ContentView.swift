@@ -22,9 +22,8 @@ struct ContentView: View {
                     VStack {
                         Text("Serch")
                         List {
-                            // WHY WON'T YOU WORK
                             ForEach(dataManager.issues) { issue in
-                                Text(issue.name ?? "NULL")
+                                ComicView(comic: issue)
                             }
                         }
                         .task {
