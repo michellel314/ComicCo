@@ -4,6 +4,11 @@ import Foundation
 struct ComicResponse: Codable {
     var results: [Comic]
 }
+
+struct DetailResponse: Codable {
+    var results: [ComicDetails]
+}
+
 struct Comic: Codable, Identifiable {
     var api_detail_url: String // I think this will have to be parsed separately once the comic itself is pulled up
     var cover_date: String
