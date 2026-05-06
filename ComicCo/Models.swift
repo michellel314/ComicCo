@@ -1,7 +1,6 @@
 import Foundation
 // api key: a23646e57aa68cf68abfa6f0f81f9b49961621f3
 // remember to always end with format=json
-
 struct ComicResponse: Codable {
     var results: [Comic]
 }
@@ -13,7 +12,6 @@ struct Comic: Codable, Identifiable {
     var issue_number: String
     var image: Image
 }
-
 struct Image: Codable {
     var icon_url: String
     var medium_url: String
@@ -23,19 +21,17 @@ struct Image: Codable {
     var thumb_url: String
     var tiny_url: String
 }
-
 struct ComicDetails: Codable {
     var description: String
     var name: String?
-    var person_credits: Person
+    var person_credits: [Person]
     var volume: Volume
 }
-
-struct Person: Codable {
+struct Person: Codable, Identifiable {
+    var id: Int
     var name: String
     var role: String
 }
-
 struct Volume: Codable {
     var name: String
 }
