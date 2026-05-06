@@ -9,7 +9,28 @@ import SwiftUI
 
 struct Homepage: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Text("C")
+                .foregroundStyle(.red)
+                .fontWeight(.bold)
+            Text("O")
+                .foregroundStyle(.orange)
+                .fontWeight(.bold)
+            Text("M")
+                .foregroundStyle(.green)
+                .fontWeight(.bold)
+            Text("I")
+                .foregroundStyle(.blue)
+                .fontWeight(.bold)
+            Text("C")
+                .foregroundStyle(.purple)
+                .fontWeight(.bold)
+            
+            Text("O")
+                .foregroundStyle(.pink)
+                .fontWeight(.bold)
+            Text(".")
+        }
     }
 }
 
