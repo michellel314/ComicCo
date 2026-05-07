@@ -28,4 +28,21 @@ class DataManager {
             print(error)
         }
     }
+    
+    func getPersonData(detailURL: String) async {
+        print("called 2 electric boogaloo")
+        let urlStr = detailURL+"?api_key=a23646e57aa68cf68abfa6f0f81f9b49961621f3&format=json"
+        let url: URL? = URL(string: urlStr)
+        guard let urlUnwrapped = url else {
+            return
+        }
+        do {
+            let (data, _) = try await URLSession.shared.data(from: urlUnwrapped)
+            let details: DetailResponse = try JSONDecoder().decode(DetailResponse.self, from: data)
+            
+        } catch let error {
+            print(error)
+        }
+    }
 }
+
