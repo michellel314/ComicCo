@@ -20,7 +20,6 @@ struct ComicView: View {
                 ProgressView()
             }
             Text(comic.name ?? "")
-            
         }
     }
 }

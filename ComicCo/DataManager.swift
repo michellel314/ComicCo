@@ -10,6 +10,7 @@ import SwiftUI
 @Observable
 class DataManager {
     private(set) var issues: [Comic] = []
+    private(set) var currentData: ComicDetails = ComicDetails(description:"",name: "",  person_credits: [], volume: Volume(name:""))
     
     func getIssueData() async {
         print("called")
@@ -29,7 +30,7 @@ class DataManager {
         }
     }
     
-    func getPersonData(detailURL: String) async {
+    func getDetailData(detailURL: String) async {
         print("called 2 electric boogaloo")
         let urlStr = detailURL+"?api_key=a23646e57aa68cf68abfa6f0f81f9b49961621f3&format=json"
         let url: URL? = URL(string: urlStr)
@@ -39,7 +40,7 @@ class DataManager {
         do {
             let (data, _) = try await URLSession.shared.data(from: urlUnwrapped)
             let details: DetailResponse = try JSONDecoder().decode(DetailResponse.self, from: data)
-            
+            currentData = details.results[0]
         } catch let error {
             print(error)
         }

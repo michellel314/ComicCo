@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(DataManager.self) private var dataManager
+    @State private var currentComic: Comic?
     var body: some View {
         VStack {
             TabView {
@@ -24,7 +25,13 @@ struct ContentView: View {
                         List {
                             ForEach(dataManager.issues) { issue in
                                 ComicView(comic: issue)
+                                    .onLongPressGesture(minimumDuration: 1.5){
+                                        currentComic = issue
+                                    }
                             }
+                        }
+                        .sheet(item: $currentComic){ comic in
+                            ComicDescription(comic: comic)
                         }
                         .task {
                             await dataManager.getIssueData()
