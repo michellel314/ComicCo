@@ -10,12 +10,13 @@ import SwiftUI
 struct ContentView: View {
     @Environment(DataManager.self) private var dataManager
     @State private var currentComic: Comic?
+    
     var body: some View {
         VStack {
             TabView {
                 Tab("My Collection", systemImage: "book.fill"){
                     VStack{
-                        Text("collection")
+                        ComicCollection()
                     }
                 }
                 

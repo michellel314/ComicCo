@@ -9,6 +9,7 @@ import SwiftUI
 
 @Observable
 class DataManager {
+    private(set) var collection: [Comic] = []
     private(set) var issues: [Comic] = []
     private(set) var currentData: ComicDetails = ComicDetails(description:"",name: "",  person_credits: [], volume: Volume(name:""))
     
@@ -44,6 +45,10 @@ class DataManager {
         } catch let error {
             print(error)
         }
+    }
+    
+    func addToCollection(comic: Comic){
+        collection.append(comic)
     }
 }
 

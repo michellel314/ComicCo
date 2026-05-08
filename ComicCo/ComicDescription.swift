@@ -28,7 +28,7 @@ struct ComicDescription: View {
                     Text("\(person.name): \(person.role)")
                 }
                 Button("Add to Collection"){
-                    
+                    dataManager.addToCollection(comic: comic)
                 }
                 .buttonStyle(.borderedProminent)
                 .padding([.top, .bottom])
