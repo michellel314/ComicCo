@@ -6,7 +6,7 @@ struct ComicResponse: Codable {
 }
 
 struct DetailResponse: Codable {
-    var results: [ComicDetails]
+    var results: ComicDetails
 }
 
 struct Comic: Codable, Identifiable {

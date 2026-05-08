@@ -11,11 +11,27 @@ struct ComicDescription: View {
     var body: some View {
         ScrollView(.vertical) {
             VStack(alignment: .center){
-                Text("SHEET")
                 Text(dataManager.currentData.name ?? "NULL")
+                    .font(.title)
+                    .padding([.top, .bottom])
+                Text("Description")
+                    .font(.title2)
+                    .underline()
+                    .fontWeight(.bold)
+                Text(dataManager.currentData.description.replacingOccurrences(of: "<p>", with: " ").replacingOccurrences(of: "</p>", with: " "))
+                    .padding([.bottom])
+                Text("Credits")
+                    .font(.title2)
+                    .underline()
+                    .fontWeight(.bold)
                 ForEach (dataManager.currentData.person_credits){ person in
-                    Text(person.name)
+                    Text("\(person.name): \(person.role)")
                 }
+                Button("Add to Collection"){
+                    
+                }
+                .buttonStyle(.borderedProminent)
+                .padding([.top, .bottom])
             }
             .frame(maxWidth: .infinity)
             .task {

@@ -40,7 +40,7 @@ class DataManager {
         do {
             let (data, _) = try await URLSession.shared.data(from: urlUnwrapped)
             let details: DetailResponse = try JSONDecoder().decode(DetailResponse.self, from: data)
-            currentData = details.results[0]
+            currentData = details.results
         } catch let error {
             print(error)
         }
