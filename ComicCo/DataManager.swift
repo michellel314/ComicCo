@@ -32,6 +32,32 @@ class DataManager {
         }
     }
     
+    
+    func searchIssues(searchText: String) async {
+        // Converts spaces and special characters into a URL-safe format.
+        // Example:
+        // "Spider Man" becomes "Spider%20Man"
+        // so the API request does not break.
+        let formattedSearch = searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        
+        let urlStr = "https://comicvine.gamespot.com/api/issues/?api_key=a23646e57aa68cf68abfa6f0f81f9b49961621f3&format=json&filter=name:\(formattedSearch)"
+        
+        guard let url = URL(string: urlStr) else {
+            return
+        }
+        
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            
+            let comics = try JSONDecoder()
+                .decode(ComicResponse.self, from: data)
+            issues = comics.results
+        } catch {
+            print(error)
+        }
+    }
+    
+    
     // Gets the details of an issue to display later
     func getDetailData(detailURL: String) async {
         print("called 2 electric boogaloo")
