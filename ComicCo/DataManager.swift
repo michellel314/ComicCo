@@ -13,6 +13,7 @@ class DataManager {
     private(set) var issues: [Comic] = []
     private(set) var currentData: ComicDetails = ComicDetails(description:"",name: "",  person_credits: [], volume: Volume(name:""))
     
+    // Grabs data of each issue using the given results, then puts them in a list of issues that'll be used to display those results
     func getIssueData() async {
         print("called")
         let urlStr = "https://comicvine.gamespot.com/api/issues/?api_key=a23646e57aa68cf68abfa6f0f81f9b49961621f3&format=json&name!=null"
@@ -31,6 +32,7 @@ class DataManager {
         }
     }
     
+    // Gets the details of an issue to display later
     func getDetailData(detailURL: String) async {
         print("called 2 electric boogaloo")
         let urlStr = detailURL+"?api_key=a23646e57aa68cf68abfa6f0f81f9b49961621f3&format=json"
@@ -47,6 +49,7 @@ class DataManager {
         }
     }
     
+    // add to collection
     func addToCollection(comic: Comic){
         collection.append(comic)
     }

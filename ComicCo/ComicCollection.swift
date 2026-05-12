@@ -9,11 +9,19 @@ import SwiftUI
 
 struct ComicCollection: View {
     @Environment(DataManager.self) private var dataManager
-
+    @State private var currentComic: Comic?
+    
     var body: some View {
-        Text("collection")
-        List {
-            
+        VStack {
+            Text("collection")
+            List {
+                ForEach(dataManager.collection){ issue in
+                    ComicView(comic: issue)
+                        .onLongPressGesture(minimumDuration: 1.5){
+                            currentComic = issue
+                        }
+                }
+            }
         }
     }
 }

@@ -27,7 +27,9 @@ struct ComicDescription: View {
                 ForEach (dataManager.currentData.person_credits){ person in
                     Text("\(person.name): \(person.role)")
                 }
-                Button("Add to Collection"){
+                // Adds selected comic to the collection of comics :D
+                let isInCollection = dataManager.collection.contains {$0.id == comic.id}
+                Button((!isInCollection) ? "Add to Collection" : "Remove from Collection"){
                     dataManager.addToCollection(comic: comic)
                 }
                 .buttonStyle(.borderedProminent)
