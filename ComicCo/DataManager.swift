@@ -53,5 +53,12 @@ class DataManager {
     func addToCollection(comic: Comic){
         collection.append(comic)
     }
+    
+    // remove from collection
+    func removeFromCollection(comic: Comic){
+        if let index = collection.firstIndex(where: {$0.id == comic.id}) {
+            collection.remove(at: index)
+        }
+    }
 }
 

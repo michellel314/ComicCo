@@ -30,7 +30,11 @@ struct ComicDescription: View {
                 // Adds selected comic to the collection of comics :D
                 let isInCollection = dataManager.collection.contains {$0.id == comic.id}
                 Button((!isInCollection) ? "Add to Collection" : "Remove from Collection"){
-                    dataManager.addToCollection(comic: comic)
+                    if (!isInCollection){
+                        dataManager.addToCollection(comic: comic)
+                    } else {
+                        dataManager.removeFromCollection(comic: comic)
+                    }
                 }
                 .buttonStyle(.borderedProminent)
                 .padding([.top, .bottom])
