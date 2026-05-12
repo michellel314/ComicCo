@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ComicCollection: View {
-    
+    @Environment(DataManager.self) private var dataManager
+
     var body: some View {
         Text("collection")
         List {
