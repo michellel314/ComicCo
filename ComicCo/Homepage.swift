@@ -73,6 +73,19 @@ struct Homepage: View {
                         .background(Color(.systemGray6))
                         .cornerRadius(12)
                         .padding(.horizontal, 30)
+                    
+                    NavigationLink {
+                        SearchView()
+                    } label: {
+                        Text("Search")
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(12)
+                            .padding(.horizontal, 30)
+                    }
+                    
                 }
                 .background(Color.gray.opacity(0.4))
                 .cornerRadius(12)

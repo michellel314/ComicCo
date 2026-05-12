@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct SearchView: View {
+    let searchText: String
     @Environment(DataManager.self) private var dataManager
     @State private var currentComic: Comic?
 
     var body: some View {
         VStack {
-            Text("Serch")
+            Text("Search")
             List {
                 ForEach(dataManager.issues) { issue in
                     ComicView(comic: issue)
