@@ -15,19 +15,26 @@ struct SearchView: View {
     var body: some View {
         VStack {
             Text("Search")
+                .foregroundStyle(.red)
+            
             List {
                 ForEach(dataManager.issues) { issue in
                     ComicView(comic: issue)
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(Color.clear)
                         .onLongPressGesture(minimumDuration: 1.5){
                             currentComic = issue
                         }
                 }
             }
+            .listStyle(.plain)
+            .scrollContentBackground(.hidden)
+            .background(Color.gray.opacity(0.15))
             .sheet(item: $currentComic){ comic in
                 ComicDescription(comic: comic)
             }
             .task {
-                await dataManager.getIssueData()
+                await dataManager.searchIssues(searchText: searchText)
             }
             
         }

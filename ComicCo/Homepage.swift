@@ -69,22 +69,23 @@ struct Homepage: View {
                     }
                     TextField("Search for comics", text: $searchText)
                         .padding()
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .background(Color(.systemGray6))
                         .cornerRadius(12)
                         .padding(.horizontal, 30)
                     
                     NavigationLink {
-                        SearchView()
+                        SearchView(searchText: searchText)
                     } label: {
                         Text("Search")
                             .padding()
                             .frame(maxWidth: .infinity)
                             .background(Color.blue)
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .cornerRadius(12)
                             .padding(.horizontal, 30)
                     }
+                    .disabled(searchText.isEmpty)
                     
                 }
                 .background(Color.gray.opacity(0.4))

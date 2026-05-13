@@ -16,11 +16,25 @@ struct ComicView: View {
                 image
                     .resizable()
                     .scaledToFill()
+                    .frame(height: 220)
+                    .frame(maxWidth: .infinity)
+                    .clipped()
             } placeholder: {
                 ProgressView()
+                    .frame(height: 220)
+                    .frame(maxWidth: .infinity)
             }
-            Text(comic.name ?? "")
+            
+            Text(comic.name ?? "Unknown Comic")
+                .font(.headline)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
+                .padding(.bottom, 8)
         }
+        .background(Color.white)
+        .cornerRadius(16)
+        .shadow(radius: 5)
+        .padding(.vertical, 8)
     }
 }
 
