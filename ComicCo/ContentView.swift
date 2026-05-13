@@ -19,7 +19,7 @@ struct ContentView: View {
                     }
                 }
                 
-                Tab("Search Comics", systemImage: "magnifyingglass.circle.fill"){
+                Tab("Home", systemImage: "house.fill"){
                     Homepage()
                 }
             }
