@@ -12,7 +12,7 @@ struct ComicCollection: View {
     @State private var currentComic: Comic?
     
     var body: some View {
-        VStack {
+        VStack (alignment: .center){
             Text("collection")
             List {
                 ForEach(dataManager.collection){ issue in
@@ -26,5 +26,7 @@ struct ComicCollection: View {
                 ComicDescription(comic: comic)
             }
         }
+        
     }
+    
 }
