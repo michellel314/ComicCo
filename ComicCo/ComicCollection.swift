@@ -30,6 +30,7 @@ struct ComicCollection: View {
             Button("Clear All"){
                 showAlert = true
             }
+            .tint(.red)
             .alert("CONFIRMATION", isPresented: $showAlert){
                 HStack{
                     Button("Yes"){
@@ -42,7 +43,6 @@ struct ComicCollection: View {
             } message: {
                 Text("Are you sure you want to clear out your precious comic collection?")
             }
-            .tint(.red)
         }
         
     }
