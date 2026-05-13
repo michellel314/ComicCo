@@ -22,6 +22,9 @@ struct ComicCollection: View {
                         }
                 }
             }
+            .sheet(item: $currentComic){ comic in
+                ComicDescription(comic: comic)
+            }
         }
     }
 }
