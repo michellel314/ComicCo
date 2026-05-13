@@ -27,7 +27,7 @@ struct Image: Codable {
     var tiny_url: String
 }
 struct ComicDetails: Codable {
-    var description: String
+    var description: String?
     var name: String?
     var person_credits: [Person]
     var volume: Volume

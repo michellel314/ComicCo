@@ -18,7 +18,7 @@ struct ComicDescription: View {
                     .font(.title2)
                     .underline()
                     .fontWeight(.bold)
-                Text(dataManager.currentData.description.replacingOccurrences(of: "<p>", with: " ").replacingOccurrences(of: "</p>", with: " "))
+                Text(dataManager.currentData.description?.replacingOccurrences(of: "<p>", with: " ").replacingOccurrences(of: "</p>", with: " ").replacingOccurrences(of: "<em>", with: "").replacingOccurrences(of: "</em>", with: "") ?? "404 Not Found")
                     .padding([.bottom])
                 Text("Credits")
                     .font(.title2)
