@@ -36,6 +36,7 @@ struct ComicDescription: View {
                         dataManager.removeFromCollection(comic: comic)
                     }
                 }
+                .tint(!isInCollection ? .green : .red)
                 .buttonStyle(.borderedProminent)
                 .padding([.top, .bottom])
             }

@@ -87,5 +87,10 @@ class DataManager {
             collection.remove(at: index)
         }
     }
+    
+    // exactly what it says
+    func clearCollection(){
+        collection.removeAll()
+    }
 }
 

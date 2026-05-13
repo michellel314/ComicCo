@@ -10,6 +10,7 @@ import SwiftUI
 struct ComicCollection: View {
     @Environment(DataManager.self) private var dataManager
     @State private var currentComic: Comic?
+    @State private var showAlert: Bool = false
     
     var body: some View {
         VStack (alignment: .center){
@@ -25,6 +26,23 @@ struct ComicCollection: View {
             .sheet(item: $currentComic){ comic in
                 ComicDescription(comic: comic)
             }
+            
+            Button("Clear All"){
+                showAlert = true
+            }
+            .alert("CONFIRMATION", isPresented: $showAlert){
+                HStack{
+                    Button("Yes"){
+                        dataManager.clearCollection()
+                    }
+                    Button("No"){
+                        // Nothing happens here
+                    }
+                }
+            } message: {
+                Text("Are you sure you want to clear out your precious comic collection?")
+            }
+            .tint(.red)
         }
         
     }
