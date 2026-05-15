@@ -15,17 +15,44 @@ struct ComicCollection: View {
     var body: some View {
         VStack (alignment: .center){
             Text("collection")
-            List {
-                ForEach(dataManager.collection){ issue in
-                    ComicView(comic: issue)
-                        .onLongPressGesture(minimumDuration: 1.5){
-                            currentComic = issue
-                        }
+            ScrollView(.horizontal){
+                HStack(alignment: .center, spacing: 20){
+                    ForEach(dataManager.collection){ issue in
+                        ComicView(comic: issue)
+                            .frame(width: 150)
+                            .scaleEffect(currentComic?.id == issue.id ? 1.08 : 1.0)
+                            .offset(
+                                y: currentComic?.id == issue.id ? -20 : 0
+                            )
+                            .shadow(
+                                color: .black.opacity(currentComic?.id == issue.id ? 0.3 : 0),
+                                radius: 8
+                            )
+                            .animation(
+                                .spring(response: 0.35, dampingFraction: 0.75),
+                                value: currentComic?.id ?? 0
+                            )
+                            .onTapGesture {
+                                currentComic = issue
+                            }
+                            .onLongPressGesture(minimumDuration: 1.5) {
+                                currentComic = issue
+                            }
+                    }
                 }
+                .padding(.horizontal)
+                .padding(.top, 30)
+                
             }
-            .sheet(item: $currentComic){ comic in
-                ComicDescription(comic: comic)
-            }
+            .frame(height: 250)
+            
+            Rectangle()
+                .fill(Color.brown)
+                .frame(height: 18)
+                .cornerRadius(8)
+                .padding(.horizontal, 20)
+                .padding(.top, 8)
+            
             
             Button("Clear All"){
                 showAlert = true
