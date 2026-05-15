@@ -9,9 +9,27 @@ import SwiftUI
 
 @Observable
 class DataManager {
-    private(set) var collection: [Comic] = []
+    
     private(set) var issues: [Comic] = []
     private(set) var currentData: ComicDetails = ComicDetails(description:"",name: "",  person_credits: [], volume: Volume(name:""))
+    
+    // Stores all comics the user has saved to their personal library.
+    // didSet runs automatically every time collection changes
+    // (adding, removing, or clearing comics).
+    // This lets us automatically save the updated collection.
+    var collection: [Comic] = [] {
+        didSet{
+            saveCollection()
+        }
+    }
+    
+    // init() runs automatically when DataManager is first created.
+    // When the app launches, this loads any previously saved comics
+    // from UserDefaults so the user's collection persists.
+    init(){
+        loadCollection()
+    }
+    
     
     // Grabs data of each issue using the given results, then puts them in a list of issues that'll be used to display those results
     func getIssueData() async {
@@ -91,6 +109,24 @@ class DataManager {
     // exactly what it says
     func clearCollection(){
         collection.removeAll()
+    }
+    
+    // Converts the collection array into storable data
+    // and saves it locally using UserDefaults.
+    func saveCollection(){
+        if let encoded = try? JSONEncoder().encode(collection) {
+                UserDefaults.standard.set(encoded, forKey: "comicCollection")
+        }
+    }
+    
+    // Checks if saved comic data already exists in UserDefaults.
+    // If found, decodes the data back into an array of Comic objects
+    // and restores the user's collection.
+    func loadCollection() {
+        if let data = UserDefaults.standard.data(forKey: "comicCollection"),
+           let decoded = try? JSONDecoder().decode([Comic].self, from: data) {
+            collection = decoded
+        }
     }
 }
 

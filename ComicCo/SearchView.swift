@@ -13,7 +13,7 @@ struct SearchView: View {
     @State private var currentComic: Comic?
 
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             Text("Search")
                 .foregroundStyle(.red)
             
