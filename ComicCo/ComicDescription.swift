@@ -12,7 +12,7 @@ struct ComicDescription: View {
     var body: some View {
         ScrollView(.vertical) {
             VStack(alignment: .center){
-                Text(dataManager.currentData.name ?? "NULL")
+                Text(comic.name ?? "Unknown Comic")
                     .font(.title)
                     .padding([.top, .bottom])
                 Text("Description")

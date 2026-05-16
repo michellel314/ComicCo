@@ -109,7 +109,9 @@ class DataManager {
     
     // add to collection
     func addToCollection(comic: Comic){
-        collection.append(comic)
+        if !collection.contains(where: { $0.id == comic.id }) {
+                collection.append(comic)
+        }
     }
     
     // remove from collection

@@ -10,6 +10,7 @@ import SwiftUI
 struct ComicCollection: View {
     @Environment(DataManager.self) private var dataManager
     @State private var currentComic: Comic?
+    @State private var detailComic: Comic?
     @State private var showAlert: Bool = false
     
     var body: some View {
@@ -43,13 +44,16 @@ struct ComicCollection: View {
                                     currentComic = issue
                                 }
                                 .onLongPressGesture(minimumDuration: 1.5) {
-                                    currentComic = issue
+                                    detailComic = issue
                                 }
                         }
                     }
                     .padding(.horizontal)
                     .padding(.top, 30)
                     
+                }
+                .sheet(item: $detailComic) { comic in
+                    ComicDescription(comic: comic)
                 }
                 .defaultScrollAnchor(.center, for: .alignment)
                 .frame(height: 250)

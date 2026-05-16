@@ -14,7 +14,7 @@ struct ContentView: View {
         VStack {
             TabView {
                 Tab("My Collection", systemImage: "book.fill"){
-                    VStack{
+                    NavigationStack{
                         ComicCollection()
                     }
                 }
