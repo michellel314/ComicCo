@@ -54,6 +54,23 @@ struct ComicCollection: View {
                 .defaultScrollAnchor(.center, for: .alignment)
                 .frame(height: 250)
                 
+                // Only show the navigation button if a comic has been selected.
+                // This creates a two-step interaction:
+                // 1. Tap comic to animate it outward
+                // 2. Press button to open the personal rating page
+                if let selectedComic = currentComic {
+                    NavigationLink {
+                        ComicRatingView(comic: selectedComic)
+                    } label: {
+                        Text("Open Comic Journal")
+                            .padding()
+                            .frame(maxWidth: 220)
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(12)
+                    }
+                }
+                
                 Rectangle()
                     .fill(Color.brown)
                     .frame(height: 18)

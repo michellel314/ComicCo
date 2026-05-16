@@ -13,6 +13,17 @@ class DataManager {
     private(set) var issues: [Comic] = []
     private(set) var currentData: ComicDetails = ComicDetails(description:"",name: "",  person_credits: [], volume: Volume(name:""))
     
+    // Stores the user's personal rating for each comic.
+    // Dictionary key = comic ID
+    // Dictionary value = rating score from slider.
+    //
+    // didSet automatically saves ratings whenever they change.
+    var ratings: [Int: Double] = [:] {
+        didSet {
+            saveRatings()
+        }
+    }
+    
     // Stores all comics the user has saved to their personal library.
     // didSet runs automatically every time collection changes
     // (adding, removing, or clearing comics).
@@ -20,14 +31,16 @@ class DataManager {
     var collection: [Comic] = [] {
         didSet{
             saveCollection()
+            
         }
     }
     
-    // init() runs automatically when DataManager is first created.
-    // When the app launches, this loads any previously saved comics
-    // from UserDefaults so the user's collection persists.
+    // Runs automatically when DataManager is first created.
+    // Loads previously saved collection and ratings from UserDefaults
+    // so user data persists after the app is closed.
     init(){
         loadCollection()
+        loadRatings()
     }
     
     
@@ -126,6 +139,24 @@ class DataManager {
         if let data = UserDefaults.standard.data(forKey: "comicCollection"),
            let decoded = try? JSONDecoder().decode([Comic].self, from: data) {
             collection = decoded
+        }
+    }
+    
+    
+    // Encodes the ratings dictionary into data
+    // and stores it locally using UserDefaults.
+    func saveRatings(){
+        if let encoded = try? JSONEncoder().encode(ratings) {
+                UserDefaults.standard.set(encoded, forKey: "comicRatings")
+            }
+    }
+    
+    // Retrieves saved rating data from UserDefaults.
+    // If saved data exists, decode it back into the ratings dictionary.
+    func loadRatings(){
+        if let data = UserDefaults.standard.data(forKey: "comicRatings"),
+               let decoded = try? JSONDecoder().decode([Int: Double].self, from: data) {
+                ratings = decoded
         }
     }
 }
