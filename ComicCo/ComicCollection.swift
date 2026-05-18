@@ -27,15 +27,16 @@ struct ComicCollection: View {
             
             VStack (alignment: .center){
                 Text("Collection")
+                    .font(.custom("ComicRelief-Bold", size: 20))
                     .foregroundStyle(.white)
-                    .font(.title)
                     .fontWeight(.bold)
                 Text("Your saved comic library")
+                    .font(.custom("ComicRelief-Bold", size: 20))
                     .foregroundStyle(.gray)
                     .font(.subheadline)
                     .fontWeight(.semibold)
                 Text("\(dataManager.collection.count) Comics Saved")
-                    .font(.caption)
+                    .font(.custom("ComicRelief-Bold", size: 15))
                     .fontWeight(.semibold)
                     .foregroundStyle(.white.opacity(0.7))
                     .padding(.horizontal, 12)
@@ -48,6 +49,7 @@ struct ComicCollection: View {
                 if (dataManager.collection.isEmpty){
                     VStack(spacing: 12) {
                         Text("No comics in your collection yet")
+                            .font(.custom("ComicRelief-Bold", size: 20))
                             .foregroundStyle(.gray)
                     }
                     .frame(height: 250)
@@ -97,6 +99,7 @@ struct ComicCollection: View {
                         } label: {
                             Text("Open Comic Journal")
                                 .padding()
+                                .font(.custom("ComicRelief-Bold", size: 20))
                                 .frame(maxWidth: 220)
                                 .background(Color.blue)
                                 .foregroundColor(.white)

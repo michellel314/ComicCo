@@ -25,7 +25,7 @@ struct ComicView: View {
             .cornerRadius(12)
             
             Text(comic.name ?? "Unknown Comic")
-                .font(.headline)
+                .font(.custom("ComicRelief-Bold", size: 20))
                 .multilineTextAlignment(.center)
                 .lineLimit(2)
                 .frame(width: 120)

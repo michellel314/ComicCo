@@ -15,6 +15,7 @@ struct SearchView: View {
     var body: some View {
         VStack(alignment: .center) {
             Text("Search")
+                .font(.custom("ComicRelief-Bold", size: 25))
                 .foregroundStyle(.red)
             
             List {

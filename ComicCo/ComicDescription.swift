@@ -18,13 +18,14 @@ struct ComicDescription: View {
         ScrollView(.vertical) {
             VStack(alignment: .center, spacing: 18){
                 Text(comic.name ?? "Unknown Comic")
-                    .font(.title)
+                    .font(.custom("ComicRelief-Bold", size: 40))
                     .padding([.top, .bottom])
                 Text("Description")
-                    .font(.title2)
+                    .font(.custom("ComicRelief-Bold", size: 30))
                     .underline()
                     .fontWeight(.bold)
                 Text(dataManager.currentData.description?.replacingOccurrences(of: "\\<.*?\\>", with: "", options: .regularExpression) ?? "404 Not Found")
+                    .font(.custom("ComicRelief-Bold", size: 20))
                     .padding([.bottom])
                 Text("Credits")
                     .font(.title2)
