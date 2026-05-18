@@ -15,7 +15,7 @@ struct Homepage: View {
     let colors: [Color] = [
             .red, .orange, .yellow,
             .green, .blue, .purple, .pink
-        ]
+    ]
     
     var body: some View {
         NavigationStack{

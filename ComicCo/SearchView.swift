@@ -29,7 +29,7 @@ struct SearchView: View {
             }
             .listStyle(.plain)
             .scrollContentBackground(.hidden)
-            .background(Color.gray.opacity(0.15))
+            .background(Color("topColor"))
             .sheet(item: $currentComic){ comic in
                 ComicDescription(comic: comic)
             }

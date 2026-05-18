@@ -9,9 +9,14 @@ import SwiftUI
 struct ComicDescription: View {
     @Environment(DataManager.self) private var dataManager
     let comic: Comic
+    let colors: [Color] = [
+        Color("topColor"),
+        Color("middleColor"),
+        Color("bottomColor")
+    ]
     var body: some View {
         ScrollView(.vertical) {
-            VStack(alignment: .center){
+            VStack(alignment: .center, spacing: 18){
                 Text(comic.name ?? "Unknown Comic")
                     .font(.title)
                     .padding([.top, .bottom])
@@ -41,7 +46,15 @@ struct ComicDescription: View {
                 .buttonStyle(.borderedProminent)
                 .padding([.top, .bottom])
             }
+            .padding()
             .frame(maxWidth: .infinity)
+            .background(
+                LinearGradient(
+                    colors: colors,
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
             .task {
                 await dataManager.getDetailData(detailURL: comic.api_detail_url)
             }
